@@ -1,4 +1,12 @@
 <?php
+function str_ends_with( $haystack, $needle ) {
+    $length = strlen( $needle );
+    if( !$length ) {
+        return true;
+    }
+    return substr( $haystack, -$length ) === $needle;
+}
+
     if (!empty($_GET['action'])) {
         $action = $_GET['action'];
         if ($action == 'test_certificate') {
