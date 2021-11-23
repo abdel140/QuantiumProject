@@ -1,15 +1,17 @@
 <?php
-    function test_certificat(string $certificatesignature){
-        $certificatelength = strlen($certificatesignature);
-        if ($certificatelength >= 65534) {
-            return true;
-        }else {
-            return false;
+    if (!empty($_GET['action'])) {
+        $action = $_GET['action'];
+        if ($action == 'test_certificate') {
+            $is_quantum_proof = test_certificate_size($_FILES['certificate']['size']);
         }
     }
 
-    function certificate_ok(string $certificatesignature){
-        echo("Le string: ".$certificatesignature.(test_certificat($certificatesignature)?" est Quantum-proof":" n'est pas Quantum-proof")."<br>");
+    function test_certificate_size(int $certificatesize): bool {
+        if ($certificatesize >= 65534) {
+            return true;
+        } else {
+            return false;
+        }
     }
 ?>
 
@@ -30,14 +32,32 @@
 </nav>
 
 <div class="main-wrapper">
-    <?php
-    $string = "abcd";
-    certificate_ok($string);
-    $filename = "string.txt";
-    $file = fopen("string.txt","r");
-    $string = fread($file,filesize("string.txt"));
-    certificate_ok($string);
-    ?>
+    <span class="divider horizontal"></span>
+
+    <form class="card" action="index.php?action=test_certificate" method="post" enctype="multipart/form-data">
+        <input id="file-input" type="file" name="certificate" onchange="this.form.submit();">
+        <label for="file-input">Upload HTTPS Certificate</label>
+    </form>
+
+<?php
+    if (!empty($is_quantum_proof)) {
+        if ($is_quantum_proof) {
+?>
+            <div class="card">
+                <h1>YOU ARE QUANTUM PROOF</h1>
+                <img id="gif" src="assets/bravo.gif" alt="People applause">
+            </div>
+<?php
+        } else {
+?>
+            <div class="card">
+                <h1>HOW TO BE QUANTUM PROOF ?</h1>
+                <p></p>
+            </div>
+<?php
+        }
+    }
+?>
 </div>
 
 <footer>
@@ -47,7 +67,7 @@
 
     </div>
 
-    <span class="footer-divider"></span>
+    <span class="divider vertical"></span>
 
     <div class="footer-img">
         <img src="assets/epsi.png" alt="Logo of EPSI school">
