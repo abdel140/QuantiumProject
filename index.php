@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@
 
 <div class="main-wrapper">
     <?php
-    echo('test')
+    echo('test');
     ?>
 </div>
 
