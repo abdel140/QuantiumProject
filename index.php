@@ -1,5 +1,16 @@
 <?php
+    function test_certificat(string $certificatesignature){
+        $certificatelength = strlen($certificatesignature);
+        if ($certificatelength >= 65534) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
+    function certificate_ok(string $certificatesignature){
+        echo("Le string: ".$certificatesignature.(test_certificat($certificatesignature)?" est Quantum-proof":" n'est pas Quantum-proof")."<br>");
+    }
 ?>
 
 
@@ -20,7 +31,12 @@
 
 <div class="main-wrapper">
     <?php
-    echo('test');
+    $string = "abcd";
+    certificate_ok($string);
+    $filename = "string.txt";
+    $file = fopen("string.txt","r");
+    $string = fread($file,filesize("string.txt"));
+    certificate_ok($string);
     ?>
 </div>
 
