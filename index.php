@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav>
-
+    <h1>Post-Quantum Checker</h1>
 </nav>
 
 <div class="main-wrapper">
@@ -25,6 +25,17 @@
 </div>
 
 <footer>
+    <h1>Do you want more informations ?</h1>
 
+    <div class="footer-infos">
+
+    </div>
+
+    <span class="footer-divider"></span>
+
+    <div class="footer-img">
+        <img src="assets/epsi.png" alt="Logo of EPSI school">
+        <img src="assets/hep.png" alt="Logo of HEP group">
+    </div>
 </footer>
 </body>
