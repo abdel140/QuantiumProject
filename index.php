@@ -11,18 +11,22 @@ function str_ends_with( $haystack, $needle ) {
         $action = $_GET['action'];
         if ($action == 'test_certificate') {
             if (str_ends_with($_FILES['certificate']['name'], '.crt')) {
-                $is_quantum_proof = test_certificate_size($_FILES['certificate']['size']);
+                $string = array();
+                exec("openssl x509 -noout -text -in ".$_FILES['certificate']['tmp_name']." | grep Public-Key",$string);
+                $string = $string[0];
+                preg_match('/\d+/',$string,$stringfound);
+                $is_quantum_proof = test_certificate_size($stringfound[0]);
             } else {
                 $wrong_format = true;
             }
         }
     }
 
-    function test_certificate_size(int $certificatesize): bool {
+    function test_certificate_size(int $certificatesize) {
         if ($certificatesize >= 65534) {
-            return true;
+            return 1;
         } else {
-            return false;
+            return -1;
         }
     }
 ?>
@@ -66,14 +70,14 @@ function str_ends_with( $haystack, $needle ) {
     </form>
 
 <?php
-    if (!empty($is_quantum_proof)) {
+    if ($is_quantum_proof > 0) {
 ?>
         <div class="card">
             <h1>YOU ARE QUANTUM PROOF</h1>
             <img id="gif" src="assets/bravo.gif" alt="People applause">
         </div>
 <?php
-    } else {
+    } elseif ($is_quantum_proof < 0) {
 ?>
         <div class="card">
             <h1>HOW TO BE QUANTUM PROOF ?</h1>
