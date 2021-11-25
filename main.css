@@ -7,13 +7,19 @@ p{
 .nav-top{
     background-color: #5D86EF;
     width: 100%;
-    color: whitesmoke;
     text-align: center;
 
 }
 .nav-top>h1{
     display: inline-block;
     vertical-align: middle;
+}
+.nav-top>h1>a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.nav-top>h1>a:hover{
+    color: #A9A9AC;
 }
 .top-text-description>p{
     margin: 20px 0 50px 0;

@@ -53,7 +53,7 @@ if (!function_exists("str_ends_with")) {
 <header>
     <nav>
         <div class="nav-top">
-            <h1>POST-QUANTUM CHECKER</h1>
+            <h1><a href="/">POST-QUANTUM CHECKER</a></h1>
         </div>
     </nav>
 </header>
