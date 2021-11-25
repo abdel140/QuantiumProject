@@ -1,10 +1,14 @@
 <?php
-function str_ends_with( $haystack, $needle ) {
-    $length = strlen( $needle );
-    if( !$length ) {
-        return true;
+$is_quantum_proof = 0;
+
+if (!function_exists("str_ends_with")) {
+    function str_ends_with( $haystack, $needle ) {
+        $length = strlen( $needle );
+        if( !$length ) {
+            return true;
+        }
+        return substr( $haystack, -$length ) === $needle;
     }
-    return substr( $haystack, -$length ) === $needle;
 }
 
     if (!empty($_GET['action'])) {
