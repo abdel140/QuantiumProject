@@ -1,23 +1,23 @@
 body{
     font-family: "Roboto Thin";
 }
+p{
+    font-size:large;
+}
 .nav-top{
     background-color: #5D86EF;
     width: 100%;
-    height: 30px;
     color: whitesmoke;
     text-align: center;
 
 }
 .nav-top>h1{
-    font-size: 15px;
-    line-height: 2;
     display: inline-block;
     vertical-align: middle;
 }
 .top-text-description>p{
     margin: 20px 0 50px 0;
-    font-size: 11px;
+    font-size: large;
     color: #7C7777;
     text-align: center;
 }
@@ -88,4 +88,20 @@ i{
 }
 .card-result-sucess h5{
     margin-top: 5px;
+}
+.information-footer-list{
+    color:#FFF;
+    text-decoration: underline;
+}
+.information-footer-list:hover{
+    color:#A9A9AC;
+}
+.center{
+    text-align: center;
+}
+.fa-times{
+    color:red;
+}
+.fa-check{
+    color:green;
 }

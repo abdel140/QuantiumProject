@@ -27,7 +27,7 @@ if (!function_exists("str_ends_with")) {
     }
 
     function test_certificate_size(int $certificatesize) {
-        if ($certificatesize >= 65534) {
+        if ($certificatesize > 4096) {
             return 1;
         } else {
             return -1;
@@ -41,7 +41,7 @@ if (!function_exists("str_ends_with")) {
     <title>Post-Quantum checker</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/QuantiumProject/main.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <!-- Bootstrap tags -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -73,20 +73,26 @@ if (!function_exists("str_ends_with")) {
         <div class="upload-area">
             <form class="card" action="index.php?action=test_certificate" method="post" enctype="multipart/form-data">
                 <input id="file-input" type="file" name="certificate" onchange="this.form.submit();">
-                <i class="fas fa-upload"></i>
 <?php
-                if ($is_quantum_proof > 0) {
-?>
-                     <i class="fa fa-check" aria-hidden="true"></i>
-<?php
-                }
                 if (!empty($wrong_format) && $wrong_format) {
 ?>
                     <span class="error">The certificate file format must be .crt</span>
 <?php
                 }
 ?>
-                <label for="file-input">Upload HTTPS Certificate</label>
+                <label class="center" for="file-input"><i class="fas fa-upload"></i>Upload HTTPS Certificate
+                <?php
+                if ($is_quantum_proof > 0) {
+?>
+                     <i class="fa fa-check" aria-hidden="true"></i>
+<?php
+                }elseif ($is_quantum_proof < 0) {
+?>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+<?php
+                }
+?>
+                </label>
             </form>
         </div>
 
@@ -135,10 +141,10 @@ if (!function_exists("str_ends_with")) {
 <footer class="row">
     <div class="col-8 information-footer">
         <h5>Do you want more </br> informations ?</h5>
-        <ul>
-            <li><a href="https://www.ibm.com/thought-leadership/institute-business-value/report/exploring-quantum-financial">Quantum computing in finance</a></li>
-            <li><a href="https://quantumxc.com/blog/quantum-computing-impact-on-cybersecurity/">Threats of quantum computing</a></li>
-        </ul>
+        <div class="container">
+            <h5><a class="information-footer-list" href="https://www.ibm.com/thought-leadership/institute-business-value/report/exploring-quantum-financial">Quantum computing in finance</a></h5></li>
+            <h5><a class="information-footer-list" href="https://quantumxc.com/blog/quantum-computing-impact-on-cybersecurity/">Threats of quantum computing</a><h5></li>
+        </div>
     </div>
     <div class="footer-logos col-4">
         <div class="row">
@@ -146,10 +152,10 @@ if (!function_exists("str_ends_with")) {
                 <div class="separator-footer"></div>
             </div>
             <div class="col-5" align="center">
-                <img src="QuantiumProject/assets/epsi.png" alt="Logo of EPSI school">
+                <img src="assets/epsi.png" alt="Logo of EPSI school">
             </div>
             <div class="col-5 mx-auto" align="center">
-                <img src="QuantiumProject/assets/hep.png" alt="Logo of HEP group">
+                <img src="assets/hep.png" alt="Logo of HEP group">
             </div>
         </div>
     </div>
