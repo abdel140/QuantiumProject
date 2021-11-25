@@ -80,6 +80,12 @@ i{
     background-color: #CBD8F9FF;
     border-radius: 10px;
 }
+.card-result-error{
+    text-align: center;
+    margin: 50px auto;
+    background-color: #f9cbcb;
+    border-radius: 10px;
+}
 .card-result-sucess h5{
     margin-top: 5px;
 }
