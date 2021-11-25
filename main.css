@@ -58,19 +58,28 @@ img{
 }
 input[type='file']{
     height:50px;
-    width:50px;
+    width:500px;
     position:absolute;
-    top:0;
-    left:0;
     opacity:0;
     cursor:pointer;
 }
 .upload-area{
-    display: inline-block;
     width: 350px;
     height: 50px;
     margin: 0 auto;
 }
 .upload-area label{
     color: #7C7777;
+}
+i{
+    margin: 10px;
+}
+.card-result-sucess{
+    text-align: center;
+    margin: 50px auto;
+    background-color: #CBD8F9FF;
+    border-radius: 10px;
+}
+.card-result-sucess h5{
+    margin-top: 5px;
 }

@@ -44,26 +44,37 @@
             <p>Check if your HTTPS certficate is post-quantum proof or not.</p>
         </div>
         <hr class="separator-header">
-        <form action="index.php?action=test_certificate" method="post" enctype="multipart/form-data">
-            <div class="upload-area">
+        <div class="upload-area">
+            <form action="QuantiumProject/index.php?action=test_certificate" method="post" enctype="multipart/form-data">
                 <input id="file-input" type="file" name="certificate" onchange="this.form.submit();" >
                 <i class="fas fa-upload"></i>
+                <?php
+                if (!empty($is_quantum_proof)) {
+                if ($is_quantum_proof) {
+                    ?>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <?php
+                }
+                }
+                ?>
                 <label for="file-input">Upload HTTPS Certificate</label>
-            </div>
-        </form>
+            </form>
+        </div>
         <?php
         if (!empty($is_quantum_proof)) {
             if ($is_quantum_proof) {
                 ?>
-                <div class="card">
-                    <h1>YOU ARE QUANTUM PROOF</h1>
-                    <img id="gif" src="assets/bravo.gif" alt="People applause">
+                <div class="card-result-sucess">
+                    <h5>YOU ARE QUANTUM PROOF</h5>
+                    <div>
+                        <img id="gif" src="QuantiumProject/assets/bravo.gif" alt="People applause">
+                    </div>
                 </div>
                 <?php
             } else {
                 ?>
-                <div class="card">
-                    <h1>HOW TO BE QUANTUM PROOF ?</h1>
+                <div class="card-result-error">
+                    <h5>HOW TO BE QUANTUM PROOF ?</h5>
                     <p></p>
                 </div>
                 <?php
